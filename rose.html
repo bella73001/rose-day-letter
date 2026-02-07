@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Rose Day 🌹</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
+  font-family:Georgia;
+}
+
+.box{
+  background:white;
+  width:360px;
+  padding:25px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.25);
+  animation:fade 0.8s ease;
+}
+
+.hidden{display:none;}
+
+input{
+  padding:12px;
+  width:80%;
+  border-radius:12px;
+  border:1px solid #ccc;
+  text-align:center;
+  font-size:16px;
+}
+
+button{
+  margin-top:15px;
+  padding:10px 25px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+}
+
+.heart{
+  font-size:45px;
+  cursor:pointer;
+  animation:beat 1s infinite;
+}
+
+.envelope{
+  font-size:50px;
+  animation:float 2s infinite;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(0.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.2)}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div class="box" id="lock">
+  <h2>🔒 Enter Password</h2>
+  <input id="pwd" placeholder="password">
+  <br>
+  <button onclick="unlock()">Unlock 💗</button>
+</div>
+
+<!-- HEART -->
+<div class="box hidden" id="heartBox">
+  <p>Tap the heart ❤️</p>
+  <div class="heart" onclick="start()">❤️</div>
+</div>
+
+<!-- READY -->
+<div class="box hidden" id="readyBox">
+  <p style="font-size:18px;">Are you ready? 💌</p>
+</div>
+
+<!-- ENVELOPE -->
+<div class="box hidden" id="envBox">
+  <div class="envelope">💌</div>
+  <p>Opening your letter…</p>
+</div>
+
+<!-- LETTER -->
+<div class="box hidden" id="letter">
+  <h2 style="color:#d6336c;">Happy Rose Day 🌹</h2>
+  <div style="font-size:40px;">🌹</div>
+  <p>
+    I’m sending you a <b>pink rose</b>, not red,<br>
+    because pink is for appreciation.
+  </p>
+  <p>
+    The way you love me,<br>
+    the way you care about me,<br>
+    the way you handle me —<br>
+    everything about it is appreciating.
+  </p>
+  <p>
+    Thank you for all your love ❤️
+  </p>
+</div>
+
+<script>
+function unlock(){
+  const val = document.getElementById("pwd").value.trim();
+  if(val === "iloveyou"){
+    document.getElementById("lock").classList.add("hidden");
+    document.getElementById("heartBox").classList.remove("hidden");
+  } else {
+    alert("Wrong password 💔");
+  }
+}
+
+function start(){
+  document.getElementById("heartBox").classList.add("hidden");
+  document.getElementById("readyBox").classList.remove("hidden");
+
+  setTimeout(()=>{
+    document.getElementById("readyBox").classList.add("hidden");
+    document.getElementById("envBox").classList.remove("hidden");
+  },2000);
+
+  setTimeout(()=>{
+    document.getElementById("envBox").classList.add("hidden");
+    document.getElementById("letter").classList.remove("hidden");
+  },4000);
+}
+</script>
+
+</body>
+</html>
